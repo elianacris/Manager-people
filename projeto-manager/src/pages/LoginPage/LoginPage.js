@@ -41,6 +41,7 @@ const LoginPage = () => {
                     value={form.password}
                     name={'password'}
                     onChange={onChange}
+                    onClick={() => goBack(history)}
 
                 />
                 <Button color='secondary' variant="outlined">Enter</Button>
