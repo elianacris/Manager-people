@@ -1,13 +1,19 @@
+import { ThemeProvider } from "@mui/material";
 import React from "react"
-import HomePage from './pages/homePage/HomePage'
+import theme from "./constants/theme";
+
+import Router from "./router/Router";
+//import FormPage from "./pages/FormPage/FormPage";
+//import LoginPage from './pages/LoginPage/LoginPage'
 
 
 
 function App() {
   return (
-    <div>
-<HomePage/>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Router />
+
+    </ThemeProvider>
   );
 }
 
