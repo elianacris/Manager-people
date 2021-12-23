@@ -1,9 +1,11 @@
 import * as React from 'react';
-import List from '../../components/List/List';
+import PersonList from '../../components/person/List/PersonList';
 
 const DetailsPage = () => {
   return (
-    <List/>
+    <div>
+      <PersonList />
+    </div>
   )
 }
 export default DetailsPage;
