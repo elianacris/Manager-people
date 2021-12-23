@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import PersonList from '../../components/person/List/PersonList';
 
 const DetailsPage = () => {

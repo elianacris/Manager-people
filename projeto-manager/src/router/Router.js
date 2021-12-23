@@ -7,10 +7,10 @@ const Router = () => {
 
     return (
         <BrowserRouter>
-        <Header/>
+            <Header />
             <Switch>
                 <Route exact path='/'>
-                    <HomePage/>
+                    <HomePage />
                 </Route>
 
                 <Route exact path='/list'>
