@@ -4,34 +4,29 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { DatePicker } from '@mui/lab'
 import { Body, Form, Main, TextSignUp } from "./styled";
-import { goToList } from "../../../router/coordinator";
-import { useHistory } from "react-router-dom";
 import useForm from "../../../hooks/useForm";
 
 
-const PersonForm = () => {
-    const history = useHistory()
-    const [form, onChange, clear] = useForm({ name: "", email: "", phone: 0, service: "", birthDate: 0 })
+const PersonForm = (props) => {
+
+    const { person } = props;
+    const [form, setForm, onChange, clear] = useForm(person)
     const [value, setValue] = useState(null);
 
-    useEffect(() =>{
-     
-    },[])
-    const registerPerson = () =>{
-        
-    }
+    useEffect(() => {
+        setForm(person);
+    }, [person]);
 
     const onSubmitForm = (event) => {
-        event.preventDefault()
-        clear()
-
+        console.log(form)
+        event.preventDefault();
+        // clear();
     }
-
 
     return (
         <Body>
             <TextSignUp>
-                <p>Register Person</p>
+                <p>{form.id ? 'Update Person' : 'Register Person'}</p>
             </TextSignUp>
             <Main>
                 <Form onSubmit={onSubmitForm}>
@@ -69,10 +64,10 @@ const PersonForm = () => {
                     <TextField
                         required
                         id="outlined-required"
-                        label="Service"
+                        label="Profession"
                         onChange={onChange}
-                        name={'service'}
-                        value={form.service}
+                        name={'profession'}
+                        value={form.profession}
 
 
                     />
@@ -91,14 +86,12 @@ const PersonForm = () => {
                     </LocalizationProvider>
 
                     <Button
-                        onClick={() => goToList(history)}
+                        type="onSubmit"
                         color='secondary'
                         variant="outlined">
-                        To Send
+                        {form.id ? 'Update' : 'Save'}
                     </Button>
-
                 </Form>
-
             </Main>
         </Body>
     )
