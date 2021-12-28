@@ -12,9 +12,9 @@ color:gray;
 `
 export const TableOne = styled.div`
 width: 100%;
-box-shadow: 0 0 3px gray;
 border-bottom: 2px;
 color:gray;
+
 tr{
     display: flex;
     flex-directon:row;

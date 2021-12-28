@@ -69,7 +69,7 @@ const PersonList = () => {
         <Table>
 
             <TableOne>
-                <div style={{ height: 400, width: '100%' }}>
+                <div style={{ height: 500, width: '100%' }}>
                     <DataGrid
                         columns={columns}
                         rows={initPeople}
