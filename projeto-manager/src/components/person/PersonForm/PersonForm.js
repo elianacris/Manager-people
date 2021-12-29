@@ -18,9 +18,8 @@ const PersonForm = (props) => {
     }, [person]);
 
     const onSubmitForm = (event) => {
-        console.log(form)
         event.preventDefault();
-        // clear();
+        clear()
     }
 
     return (
@@ -76,7 +75,7 @@ const PersonForm = (props) => {
                             required
                             label="Birth Date"
                             name={'birthDate'}
-                            value={value}
+                            value={form.birthDate}
                             onChange={(newValue) => {
                                 setValue(newValue);
                             }}
@@ -88,9 +87,14 @@ const PersonForm = (props) => {
                     <Button
                         type="onSubmit"
                         color='secondary'
-                        variant="outlined">
+                        variant="outlined"
+                        onClick={() => props.update(form)}
+                    >
                         {form.id ? 'Update' : 'Save'}
                     </Button>
+                    <Button type="button" variant="outlined"
+                        onClick={() => setForm("")}
+                    >CLEAR</Button>
                 </Form>
             </Main>
         </Body>

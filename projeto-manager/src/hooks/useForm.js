@@ -11,6 +11,7 @@ const useForm = (initialState) => {
 
     const clear = () => {
         setForm(initialState)
+
     }
 
     return [form, setForm, onChange, clear]

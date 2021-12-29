@@ -10,7 +10,7 @@ const HomePage = () => {
 
     return (
         <Home>
-            <img src={Logo} alt='logo' />
+            
             <Buttons>
                 <Button onClick={() => goToList(history)}
                     variant="contained"

@@ -9,6 +9,9 @@ export const Home = styled.div`
     align-items: center;
     align-content: center;
     margin:50px;
+    img{
+        max-width:100%;
+    }
 
 `
 export const Buttons = styled.div`

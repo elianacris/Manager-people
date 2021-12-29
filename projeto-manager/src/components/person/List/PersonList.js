@@ -2,14 +2,6 @@ import { DataGrid } from '@mui/x-data-grid';
 import React, { useState } from "react";
 import { Table, TableOne, TableTwo } from "./styled";
 import PersonForm from "../PersonForm/PersonForm";
-/* import { Divider, IconButton } from "@mui/material";
-import PersonIcon from '@mui/icons-material/Person';
-import WorkIcon from '@mui/icons-material/Work';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import EmailIcon from '@mui/icons-material/Email';
-import EventIcon from '@mui/icons-material/Event';
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'; */
 
 const columns = [
     { field: 'name', headerName: 'Name', width: 70 },
@@ -26,7 +18,7 @@ const initPeople = [
         profession: 'Veterinária',
         phone: '62984098147',
         email: 'joana@gmail.com',
-        birthDate: '01/01/1993'
+        birthDate: '01/01/1994'
     },
     {
         id: 2,
@@ -34,7 +26,7 @@ const initPeople = [
         profession: 'Advogado',
         phone: '6298546833',
         email: 'pedro@gmail.com',
-        birthDate: '01/01/1993'
+        birthDate: '01/01/1985'
     },
     {
         id: 3,
@@ -62,7 +54,21 @@ const PersonList = () => {
     const [personSelect, setPersonSelect] = useState(initPerson);
 
     const onSelectedPerson = (id) => {
+        // eslint-disable-next-line eqeqeq
         setPersonSelect(people.find(f => f.id == id));
+    }
+
+    const updatePerson = (person) => {
+        const list = [...people];
+        const index = people.findIndex(el => el.id == person.id);
+        setPeople([...list[index] = {
+            name: person.name,
+            email: person.email,
+            phone: person.phone,
+            profession: person.profession,
+            birthDate: person.birthDate
+        }]);
+
     }
 
     return (
@@ -77,12 +83,16 @@ const PersonList = () => {
                         rowsPerPageOptions={[5]}
                         checkboxSelection={false}
                         onSelectionModelChange={(id) => onSelectedPerson(id)}
+
                     />
                 </div>
             </TableOne>
 
             <TableTwo>
-                <PersonForm person={personSelect} />
+                <PersonForm
+                    person={personSelect}
+                    update={(value) => updatePerson(value)}
+                />
             </TableTwo>
         </Table>
     );
