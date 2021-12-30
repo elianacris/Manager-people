@@ -1,17 +1,25 @@
 import { Button, TextField } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import React, { useEffect } from "react";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { DatePicker } from '@mui/lab'
 import { Body, Form, Main, TextSignUp } from "./styled";
 import useForm from "../../../hooks/useForm";
+import DateAdapter from '@mui/lab/AdapterDateFns';
 
+const initPerson = {
+    id: '',
+    name: '',
+    email: '',
+    phone: '',
+    profession: '',
+    birthDate: null
+}
 
 const PersonForm = (props) => {
 
     const { person } = props;
     const [form, setForm, onChange, clear] = useForm(person)
-    const [value, setValue] = useState(null);
+    // const [value, setValue] = useState(new Date());
 
     useEffect(() => {
         setForm(person);
@@ -70,14 +78,20 @@ const PersonForm = (props) => {
 
 
                     />
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <LocalizationProvider dateAdapter={DateAdapter}>
                         <DatePicker
-                            required
-                            label="Birth Date"
-                            name={'birthDate'}
+                            mask="__/__/____"
+                            id="outlined-required"
+                            name='birthDate'
+                            type="date"
+                            disableFuture
+                            label="Birth date"
+                            openTo="year"
+                            views={['year', 'month', 'day']}
                             value={form.birthDate}
+                            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
                             onChange={(newValue) => {
-                                setValue(newValue);
+                                setForm({ ...form, birthDate: newValue })
                             }}
                             renderInput={(params) => <TextField {...params} />}
                         />
@@ -85,15 +99,15 @@ const PersonForm = (props) => {
                     </LocalizationProvider>
 
                     <Button
-                        type="onSubmit"
+                        type="submit"
                         color='secondary'
                         variant="outlined"
-                        onClick={() => props.update(form)}
+                        onClick={() => form.id ? props.update(form) : props.create(form)}
                     >
                         {form.id ? 'Update' : 'Save'}
                     </Button>
                     <Button type="button" variant="outlined"
-                        onClick={() => setForm("")}
+                        onClick={() => setForm(initPerson)}
                     >CLEAR</Button>
                 </Form>
             </Main>

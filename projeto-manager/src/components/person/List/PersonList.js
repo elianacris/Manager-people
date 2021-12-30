@@ -2,41 +2,15 @@ import { DataGrid } from '@mui/x-data-grid';
 import React, { useState } from "react";
 import { Table, TableOne, TableTwo } from "./styled";
 import PersonForm from "../PersonForm/PersonForm";
+import { useEffect } from 'react';
 
 const columns = [
-    { field: 'name', headerName: 'Name', width: 70 },
-    { field: 'profession', headerName: 'Profession', width: 130 },
-    { field: 'phone', headerName: 'Phone', width: 130 },
-    { field: 'email', headerName: 'Email', type: 'number', width: 90 },
-    { field: 'birthDate', headerName: 'Birth Date', type: 'date', width: 90 }
+    { field: 'name', headerName: 'Name', width: 130 },
+    { field: 'profession', headerName: 'Profession', width: 120 },
+    { field: 'phone', headerName: 'Phone', width: 110 },
+    { field: 'email', headerName: 'Email', type: 'number', width: 180 },
+    { field: 'birthDate', headerName: 'Birth Date', type: 'date', width: 135 }
 ];
-
-const initPeople = [
-    {
-        id: 1,
-        name: 'Joana',
-        profession: 'Veterinária',
-        phone: '62984098147',
-        email: 'joana@gmail.com',
-        birthDate: '01/01/1994'
-    },
-    {
-        id: 2,
-        name: 'Pedro',
-        profession: 'Advogado',
-        phone: '6298546833',
-        email: 'pedro@gmail.com',
-        birthDate: '01/01/1985'
-    },
-    {
-        id: 3,
-        name: 'Haryel',
-        profession: 'Analista',
-        phone: '6291234567',
-        email: 'haryel@gmail.com',
-        birthDate: '01/01/1993'
-    }
-]
 
 const initPerson = {
     id: '',
@@ -47,20 +21,43 @@ const initPerson = {
     birthDate: ''
 }
 
-
 const PersonList = () => {
 
-    const [people, setPeople] = useState(initPeople);
+    const [people, setPeople] = useState([]);
     const [personSelect, setPersonSelect] = useState(initPerson);
+
+    useEffect(() => {
+        if (localStorage.getItem("people")) {
+            const peopleList = localStorage.getItem("people");
+            const peopleArray = JSON.parse(peopleList);
+            setPeople(peopleArray);
+        }
+    }, []);
+
+    useEffect(() => {
+        const list = people;
+        localStorage.setItem("people", JSON.stringify(list));
+
+    }, [people]);
+
 
     const onSelectedPerson = (id) => {
         // eslint-disable-next-line eqeqeq
         setPersonSelect(people.find(f => f.id == id));
     }
 
+    const createPerson = (person) => {
+        const newPeople = [...people, { ...person, id: Date.now() }];
+        setPeople(newPeople)
+    }
+
     const updatePerson = (person) => {
-        const list = [...people];
+
         const index = people.findIndex(el => el.id == person.id);
+        const list = [...people];
+
+
+
         setPeople([...list[index] = {
             name: person.name,
             email: person.email,
@@ -68,22 +65,20 @@ const PersonList = () => {
             profession: person.profession,
             birthDate: person.birthDate
         }]);
-
     }
+
 
     return (
         <Table>
 
             <TableOne>
-                <div style={{ height: 500, width: '100%' }}>
+                <div style={{ height: 550, width: 'auto' }}>
                     <DataGrid
+                        
                         columns={columns}
-                        rows={initPeople}
-                        pageSize={5}
-                        rowsPerPageOptions={[5]}
+                        rows={people}
                         checkboxSelection={false}
                         onSelectionModelChange={(id) => onSelectedPerson(id)}
-
                     />
                 </div>
             </TableOne>
@@ -91,6 +86,7 @@ const PersonList = () => {
             <TableTwo>
                 <PersonForm
                     person={personSelect}
+                    create={(value) => createPerson(value)}
                     update={(value) => updatePerson(value)}
                 />
             </TableTwo>

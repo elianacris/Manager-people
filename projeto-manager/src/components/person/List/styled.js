@@ -5,29 +5,29 @@ export const Table = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: center;
-margin:20px;
-border: 1px black;
-gap: 30px;
+margin:0.5rem;
+border: 1em black;
+gap: 0.5em;
 color:gray;
 `
 export const TableOne = styled.div`
 width: 100%;
-border-bottom: 2px;
+border-bottom: 2em;
 color:gray;
 
 tr{
     display: flex;
     flex-directon:row;
     justify-content: space-between;
-    padding:10px;
-    margin-left:10px;
-    margin-right: 15px;
+    padding:10em;
+    margin-left:10em;
+    margin-right: 15em;
     text-align:center
 }
 
 `
 export const TableTwo = styled.div`
-box-shadow: 0 0 3px gray;
+box-shadow: 0 0 0.1em ;
 width: 100%;
 display: flex;
 flex-direction:row;
