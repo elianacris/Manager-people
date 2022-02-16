@@ -1,18 +1,20 @@
 # Manager-people
-O Projeto é um formulário para gerenciamento de pessoas, onde você cadastra uma pessoa no formulário, com o nome, telefone, e-mail, profissão, data de nascimento, após o cadastro essa pessoa será incluida na planilha ao lado, caso queira editar as informações inseridas sobre essa pessoa so clicar na linha onde consta o seu nome, e o formulário de cadastro atualiza para edição.
-O projeto teve seu código divido em pastas com as suas respectivas funções, temos os components, constants, hooks, img, layout, pages, router, foram utilizadas o styled-components juntamente com o Material-MUI.
-O Projeto foi realizado com a tecnologia React.js, foram utilizadas as bibliotecas do Material UI e styled-components para o design do site, para realizar as rotas foram utilizado o react router, para validação dos campos dos formulários de login, cadastro, edição de cadastro, foram utilizados as bibliotecas react-hook-form, @hookform/resolvers yup, validations-br@^1.2.0, react-input-mask@^2.0.4.
-
+O Projeto é um formulário para gerenciamento de pessoas, onde você cadastra uma pessoa no formulário, com o nome, telefone, e-mail, profissão, data de nascimento, após o cadastro essa pessoa será incluida na planilha ao lado, caso queira editar as informações inseridas sobre essa pessoa é só clicar na linha onde consta o  nome, e o formulário de cadastro atualiza para edição. O projeto teve seu código divido em pastas com as suas respectivas funções, temos os components, constants, hooks, img, layout, pages, router.
 ## Objetivo
 Desenvolver um website para cadastro de pessoas. 
 
  ## Tecnologias e bibliotecas utilizadas:
-<li> React JS 17.0
-<li> styled-components
-<li> axios
-<li> react-router-dom
-<li> material ui
-<li> API Labefood
+- [React.js](https://reactjs.org/)
+- [Styled-components](https://styled-components.com/)
+- [React-hook-form](https://react-hook-form.com/)
+- [Material-UI](https://mui.com/)
+- [React-input-mask@^2.0.4.](https://www.npmjs.com/package/react-input-mask)
+- [Validations-br@^1.2.0](https://www.npmjs.com/package/validations-br)
+ 
+### Imagens
+![image](https://user-images.githubusercontent.com/89935565/147597564-e04a24b1-a4b6-4472-bead-4b8db3fb4225.png)
+
+![image](https://user-images.githubusercontent.com/89935565/147597578-9a5c7794-2c04-4680-9294-5b8a6c7b1636.png)
 
 ## Começando
 
