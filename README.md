@@ -1,7 +1,7 @@
 # Manager-people
 O Projeto é um formulário para gerenciamento de pessoas, onde você cadastra uma pessoa no formulário, com o nome, telefone, e-mail, profissão, data de nascimento, após o cadastro essa pessoa será incluida na planilha ao lado, caso queira editar as informações inseridas sobre essa pessoa é só clicar na linha onde consta o  nome, e o formulário de cadastro atualiza para edição. O projeto teve seu código divido em pastas com as suas respectivas funções, temos os components, constants, hooks, img, layout, pages, router.
 ## Objetivo
-Desenvolver um website para cadastro de pessoas. 
+Desenvolver um website para gerenciamento de pessoas. 
 
  ## Tecnologias e bibliotecas utilizadas:
 - [React.js](https://reactjs.org/)
