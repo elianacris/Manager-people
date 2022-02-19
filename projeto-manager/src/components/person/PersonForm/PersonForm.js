@@ -1,33 +1,27 @@
 import { Button, TextField } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { DatePicker } from '@mui/lab'
 import { Body, Form, Main, TextSignUp } from "./styled";
-import useForm from "../../../hooks/useForm";
 import DateAdapter from '@mui/lab/AdapterDateFns';
+import InputRHF from "../../RHF/InputRHF";
+import validationForm from "../../../util/validationForm";
+import { useForm } from "react-hook-form";
 
-const initPerson = {
-    id: '',
-    name: '',
-    email: '',
-    phone: '',
-    profession: '',
-    birthDate: null
-}
 
 const PersonForm = (props) => {
-
-    const { person } = props;
-    const [form, setForm, onChange, clear] = useForm(person)
+    const form = useForm(validationForm);
+    const { control, handleSubmit, reset } = form;
+    // const { person } = props;
     // const [value, setValue] = useState(new Date());
 
-    useEffect(() => {
-        setForm(person);
-    }, [person]);
+    // useEffect(() => {
+    //     form(person);
+    // }, [person]);
 
     const onSubmitForm = (event) => {
         event.preventDefault();
-        clear()
+        reset()
     }
 
     return (
@@ -36,48 +30,32 @@ const PersonForm = (props) => {
                 <p>{form.id ? 'Update Person' : 'Register Person'}</p>
             </TextSignUp>
             <Main>
-                <Form onSubmit={onSubmitForm}>
-                    <TextField
-                        required
-                        id="outlined-required"
+                <Form onSubmit={handleSubmit(onSubmitForm)}>
+                    <InputRHF
                         label="Name"
-                        onChange={onChange}
-                        name={'name'}
-                        value={form.name}
-
+                        name='name'
+                        control={control}
                     />
 
-                    <TextField
-                        required
-                        id="outlined-required"
+                    <InputRHF
                         label="E-mail"
-                        type='email'
-                        onChange={onChange}
-                        name={'email'}
-                        value={form.email}
-
+                        name='email'
+                        control={control}
                     />
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label=" Phone (xx) xxxxx-xxxx"
+
+                    <InputRHF
+                        label="Phone (xx) xxxxx-xxxx"
                         type='tel'
-                        onChange={onChange}
-                        name={'phone'}
-                        value={form.phone}
-
-
+                        name='phone'
+                        control={control}
                     />
+
                     <TextField
-                        required
-                        id="outlined-required"
                         label="Profession"
-                        onChange={onChange}
-                        name={'profession'}
-                        value={form.profession}
-
-
+                        name='profession'
+                        control={control}
                     />
+
                     <LocalizationProvider dateAdapter={DateAdapter}>
                         <DatePicker
                             mask="__/__/____"
@@ -88,10 +66,10 @@ const PersonForm = (props) => {
                             label="Birth date"
                             openTo="year"
                             views={['year', 'month', 'day']}
-                            value={form.birthDate}
+                          
                             pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
                             onChange={(newValue) => {
-                                setForm({ ...form, birthDate: newValue })
+                                // setForm({ ...form, birthDate: newValue })
                             }}
                             renderInput={(params) => <TextField {...params} />}
                         />
@@ -107,7 +85,7 @@ const PersonForm = (props) => {
                         {form.id ? 'Update' : 'Save'}
                     </Button>
                     <Button type="button" variant="outlined"
-                        onClick={() => setForm(initPerson)}
+                    onClick={reset}
                     >CLEAR</Button>
                 </Form>
             </Main>

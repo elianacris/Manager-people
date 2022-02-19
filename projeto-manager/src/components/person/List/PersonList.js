@@ -53,7 +53,7 @@ const PersonList = () => {
 
     const updatePerson = (person) => {
 
-        const index = people.findIndex(el => el.id == person.id);
+        const index = people.findIndex(el => el.id === person.id);
         const list = [...people];
 
 
