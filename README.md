@@ -12,9 +12,9 @@ Desenvolver um website para gerenciamento de pessoas.
 - [Validations-br@^1.2.0](https://www.npmjs.com/package/validations-br)
  
 ### Imagens
-![image](https://user-images.githubusercontent.com/89935565/147597564-e04a24b1-a4b6-4472-bead-4b8db3fb4225.png)
+![image](https://github.com/elianacris/Manager-people/assets/89935565/6d067f3b-8396-47b9-bb57-df0ef21a08fc)
+![image](https://github.com/elianacris/Manager-people/assets/89935565/65b35fb0-9799-4c94-a1ee-6246169cb5d6)
 
-![image](https://user-images.githubusercontent.com/89935565/147597578-9a5c7794-2c04-4680-9294-5b8a6c7b1636.png)
 
 ## Começando
 
