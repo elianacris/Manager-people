@@ -1,12 +1,7 @@
-export const goToHome = (history) => {
-    history.push('/')
+export function goToHome(history) {
+  history("/");
 }
 
-export const goToList = (history) => {
-    history.push('/list')
+export function goToList(history) {
+  history("/list");
 }
-
-export const goBack = (history) => {
-    history.goBack()
-}
-
